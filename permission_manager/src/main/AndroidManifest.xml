@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sahoo.permission_manager" />
+    package="com.sahoo.permission_manager">
+
+    <application>
+        <activity android:name="com.sahoo.permission_manager.PermissionActivity" android:theme="@style/Theme.PermissionManager" />
+    </application>
+</manifest>
