@@ -1,0 +1,69 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    `maven-publish`
+}
+
+android {
+    namespace = "com.sahoo.permission_manager"
+    compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}
+
+// afterEvaluate block to print components
+afterEvaluate {
+    publishing{
+        publications {
+            create<MavenPublication>("release") {
+                // Error handling if the release component is not found
+                val releaseComponent = components.findByName("release")
+                    ?: error("Release component not found. Available components: ${components.joinToString { it.name }}")
+                from(releaseComponent)
+                groupId = "com.github.Sahoo108"
+                artifactId = "permission_manager"
+                version = "1.0"
+            }
+        }
+        repositories {
+            maven {
+                url = uri("https://jitpack.io")
+            }
+        }
+    }
+}
