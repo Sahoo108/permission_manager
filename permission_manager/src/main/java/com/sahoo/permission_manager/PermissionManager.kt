@@ -4,6 +4,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 
+/**
+ * @param activity : activity
+ */
 class PermissionManager(private val activity: AppCompatActivity) {
     private var permissionLauncher: ActivityResultLauncher<Array<String>>
     private var callback: IPermissionCallback? = null

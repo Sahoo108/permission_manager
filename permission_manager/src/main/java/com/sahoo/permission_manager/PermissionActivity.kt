@@ -3,6 +3,9 @@ package com.sahoo.permission_manager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * extend this class to use permission manager at top level in activity
+ */
 open class PermissionActivity : AppCompatActivity(), IPermissionCallback{
 
     private lateinit var permissionManager: PermissionManager
