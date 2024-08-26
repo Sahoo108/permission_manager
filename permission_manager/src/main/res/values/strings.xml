@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">permission_manager</string>
+    <string name="permission_denied">You have denied  permission %1$s</string>
+    <string name="open_settings_desc">You have denied %1$s permission(s). Open settings and enable the %2$s permission(s) to access</string>
+    <string name="open_settings_title">Settings</string>
+    <string name="cancel_title">Cancel</string>
 </resources>

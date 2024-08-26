@@ -13,10 +13,11 @@ open class PermissionActivity : AppCompatActivity(), IPermissionCallback{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         permissionManager = PermissionManager(this)
+        permissionManager.registerPermissionLauncher(this)
     }
 
     fun requestPermissions(permissionRequest: PermissionRequest) {
-        permissionManager.requestPermissions(permissionRequest, this)
+        permissionManager.requestPermissions(permissionRequest)
     }
 
     override fun onPermissionGranted() {
@@ -28,6 +29,10 @@ open class PermissionActivity : AppCompatActivity(), IPermissionCallback{
     }
 
     override fun onPermissionPermanentlyDenied(permanentlyDeniedPermissions: List<String>) {
+        // will be implemented by the subclass
+    }
+
+    override fun onOpenAppSettings() {
         // will be implemented by the subclass
     }
 }
