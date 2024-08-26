@@ -57,7 +57,7 @@ afterEvaluate {
                 from(releaseComponent)
                 groupId = "com.github.Sahoo108"
                 artifactId = "permission_manager"
-                version = "1.0"
+                version = "1.3"
             }
         }
         repositories {
